@@ -1,0 +1,95 @@
+{% include 'teacherheader.html' %}
+<div class="basic-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="text-container">
+  
+
+<script> 
+		function printDiv() { 
+			// alert("HAiii");
+			var divContents = document.getElementById("div_print").innerHTML; 
+			var a = window.open('', '', 'height=500, width=500'); 
+			a.document.write(divContents); 
+			a.document.close(); 
+			a.print(); 
+		} 
+	</script> 
+</head> 
+
+<body style="text-align:center;"> 
+			
+	<a class="btn btn-warning"  onclick="printDiv()" href="teacherviewattendance">print</a>
+
+<div id="div_print"> 
+
+
+		<center>
+					<h1>View Attendance</h1>
+
+	<form method="post" style="margin-top: 70px">
+		<table class="table" style="width: 500px;">
+	<tr>
+		<td><select name="subject" class="form-control">
+			<option>select</option>
+			{%for row in data['view']%}
+			<option value="{{row['period_id']}}">{{row['subject']}}</option>
+			{%endfor%}
+		</select></td>
+	</tr>
+<tr>		<td align="center" colspan="2"><input type="submit" name="submit" value="search" class="btn btn-warning"></td>
+</tr>
+</table>
+{% if data['search']%}
+
+		<table class="table" style="width: auto;">
+			<tr>
+				<th>Student Name</th>
+				<th>Subject</th>
+
+				<th>Date</th>
+
+				<th>From Time</th>
+
+				<th>To Time</th>
+				<th>Attendance Date</th>
+			</tr>
+			{% for row in data['search']%}
+
+
+			<tr>
+				<td>{{row['firstname']}} {{row['lastname']}}</td>
+				<td>{{row['subject']}}</td>
+				<td>{{row['date']}}</td>
+				<td>{{row['fromtime']}}</td>
+				<td>{{row['totime']}}</td>
+				<td>{{row['adate']}}</td>
+			</tr>
+
+				{% endfor %}
+			{%endif%}
+	<tr>
+		<td><input type="text" name="" value="{{data['cou']}}"></td>
+	</tr>
+		</table>
+
+
+</form>
+</center>
+</div>
+
+   </div> <!-- end of text-container -->
+                </div> <!-- end of col -->
+                <div class="col-lg-6">
+                    <div class="image-container">
+                        <img class="img-fluid" src="/static/web/images/details-1-office-worker.svg" alt="alternative">
+                    </div> <!-- end of image-container -->
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of basic-1 -->
+    <!-- end of details 1 -->
+
+
+{% include 'footer.html' %}

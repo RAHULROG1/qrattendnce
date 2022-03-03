@@ -1,0 +1,60 @@
+{% include 'adminheader.html' %}
+
+<div class="basic-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="text-container">
+  
+
+<center>
+	<form method="post" style="margin-top: 70px">
+
+
+
+		<h1>View Student</h1>
+		<table class="table" style="width: auto;">
+			<tr>
+				<th>First Name</th>
+
+				<th>Last Name</th>
+
+				<th>Place</th>
+
+				<th>Age</th>
+
+				<th>Email</th>
+
+			</tr>
+			{% for row in data['students']%}
+			<tr>
+				<td>{{row['firstname']}}</td>
+				<td>{{row['lastname']}}</td>
+				<td>{{row['place']}}</td>
+				<td>{{row['age']}}</td>
+				<td>{{row['email']}}</td>
+				<td>
+				<a class="btn btn-warning" href="adminviewattendance?&sid={{row['student_id']}}">View Attendance</a>
+				</td>
+			</tr>
+			{% endfor%}
+		</table>
+
+</form>
+</center>
+
+ </div> <!-- end of text-container -->
+                </div> <!-- end of col -->
+                <div class="col-lg-6">
+                    <div class="image-container">
+                        <img class="img-fluid" src="/static/web/images/details-1-office-worker.svg" alt="alternative">
+                    </div> <!-- end of image-container -->
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of basic-1 -->
+    <!-- end of details 1 -->
+
+
+
+{% include 'footer.html' %}

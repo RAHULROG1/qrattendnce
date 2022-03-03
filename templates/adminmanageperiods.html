@@ -1,0 +1,106 @@
+{% include 'adminheader.html' %}
+
+<div class="basic-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="text-container">
+  
+
+<center>
+	<form method="post" style="margin-top: 70px">
+
+
+
+		{% if data['updateperiod'] %}
+	<h1>Update Manage Periods</h1>
+	
+		<table class="table">
+			<tr>
+				<th>Subject</th>
+				<td><input type="text" name="s" required class="form-control" value="{{data['updateperiod'][0]['subject']}}"></td>
+			</tr>
+			<tr>
+				<th>Date</th>
+				<td><input type="date" name="d" required class="form-control" value="{{data['updateperiod'][0]['date']}}"></td>
+			</tr>
+			<tr>
+				<th>From Time</th>
+				<td><input type="text" name="ft" required class="form-control" value="{{data['updateperiod'][0]['fromtime']}}"></td>
+			</tr>
+			<tr>
+				<th>To Time</th>
+				<td><input type="text" name="tt" required class="form-control" value="{{data['updateperiod'][0]['totime']}}"></td>
+			</tr>
+				<tr>
+				<td align="center" colspan="2"><input type="submit" name="update" value="UPDATE" class="btn btn-success"></td>
+			</tr>
+		</table>
+		{% else %}
+		<h1> Manage Periods</h1>
+	
+		<table class="table" style="width: 500px">
+			<tr>
+				<th>Subject</th>
+				<td><input type="text" name="s" required class="form-control"></td>
+			</tr>
+			<tr>
+				<th>Date</th>
+				<td><input type="date" name="d" required class="form-control"></td>
+			</tr>
+			<tr>
+				<th>From Time</th>
+				<td><input type="text" name="ft" required class="form-control"></td>
+			</tr>
+			<tr>
+				<th>To Time</th>
+				<td><input type="text" name="tt" required class="form-control"></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><input type="submit" name="register" value="ADD" class="btn btn-success"></td>
+			</tr>
+		</table>
+		{% endif %}
+
+ </div> <!-- end of text-container -->
+                </div> <!-- end of col -->
+                <div class="col-lg-6">
+                    <div class="image-container">
+                        <img class="img-fluid" src="/static/web/images/details-1-office-worker.svg" alt="alternative">
+                    </div> <!-- end of image-container -->
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of basic-1 -->
+    <!-- end of details 1 -->
+
+
+		<h1>View Periods</h1>
+		<table class="table" style="width: auto;">
+			<tr>
+				<th>Subject</th>
+
+				<th>Date</th>
+
+				<th>From Time</th>
+
+				<th>To Time</th>
+			</tr>
+			{% for row in data['periodss']%}
+			<tr>
+				<td>{{row['subject']}}</td>
+				<td>{{row['date']}}</td>
+				<td>{{row['fromtime']}}</td>
+				<td>{{row['totime']}}</td>
+				<td>
+				<a class="btn btn-warning" href="?action=update&mid={{row['period_id']}}">update</a>
+				<a class="btn btn-danger" href="?action=delete&mid={{row['period_id']}}">delete</a>
+				</td>
+			</tr>
+			{% endfor%}
+		</table>
+
+</form>
+</center>
+
+{% include 'footer.html' %}
